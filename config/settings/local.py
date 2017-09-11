@@ -12,6 +12,12 @@ from .base import *  # noqa
 
 import os
 import openpay
+import dj_database_url
+import sys
+
+reload(sys)
+sys.setdefaultencoding('utf8')
+
 
 # DEBUG
 # -----------------------------------------------------------------------------
@@ -29,19 +35,38 @@ CACHES = {
 
 # DATABASE
 # -----------------------------------------------------------------------------
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(str(ROOT_DIR), 'db.sqlite3'),
+#     }
+# }
+
+
+# DATABASE
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(str(ROOT_DIR), 'db.sqlite3'),
-    }
+    'default': dj_database_url.config()
 }
+
+
+# -----------------------------------------------------------------------------
+# DATABASES = {
+#      'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'miemma',
+#         'USER': 'miemma',
+#         'PASSWORD': 'hola',
+#         'HOST': 'localhost',
+#         'PORT': '5432',
+#     }
+# }
 
 # django-debug-toolbar
 # -----------------------------------------------------------------------------
 MIDDLEWARE_CLASSES += ('debug_toolbar.middleware.DebugToolbarMiddleware',)
 INSTALLED_APPS += ('debug_toolbar', )
 
-INTERNAL_IPS = ('127.0.0.1', '10.0.2.2',)
+INTERNAL_IPS = ('localhost','127.0.0.1', '10.0.2.2',)
 
 DEBUG_TOOLBAR_CONFIG = {
     'DISABLE_PANELS': [

@@ -21,7 +21,7 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # SITE CONFIGURATION
 # -----------------------------------------------------------------------------
-ALLOWED_HOSTS = [".miemma.com"]
+ALLOWED_HOSTS = [".miemma.com", "localhost"]
 
 # DATABASE
 # -----------------------------------------------------------------------------
